@@ -1,0 +1,35 @@
+.Toolbar{
+    height: 56px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #1a1817;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding:0 20px;
+    box-sizing: border-box;
+    z-index:90;
+}
+.Toolbar nav{
+    height: 100%;
+}
+.Logo{
+    height: 80%;
+
+}
+@media (max-width:499px){
+    .DesktopOnly{
+        display: none;
+    }
+    .Name{
+        color:rgb(170, 167, 167);
+        text-decoration: none;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 122px;
+        height:100%;
+        padding:16px 10px;
+        border-bottom: 4px solid transparent;
+    }
+}

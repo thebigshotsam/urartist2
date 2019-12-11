@@ -1,0 +1,33 @@
+.FilterByItem li {
+    position: relative;
+    float: left;
+    min-width: 65px;
+    height: 69px;
+    padding: 0 20px;
+    line-height: 73px;
+    font-size: 13px;
+    text-transform: uppercase;
+    text-align: center;
+    border-right: 1px solid #E6EAEA;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+.FilterByItem li:hover {
+    background-color: white;
+}
+
+.name_filter {
+    display: block;
+    max-width: 110px;
+    height: 70px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+li {
+    list-style: none;
+}
+
+ 
+  

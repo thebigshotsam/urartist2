@@ -1,0 +1,73 @@
+.NavigationItems{
+    margin: 0;
+    padding:0;
+    list-style: none;
+    flex-flow: column;
+    display: flex;
+    align-items: center;
+    height:100%;
+}
+
+.form_btn
+    {
+      padding: 6px 10px;
+    margin-left: 1.1rem;
+    justify-content: space-between;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0 0 0 1px rgba(248, 246, 246, 0.5), 0 1px 2px rgba(248, 246, 246, 0.5);
+    box-shadow: 0 0 0 1px rgba(248, 246, 246, 0.5), 0 1px 2px rgba(248, 246, 246, 0.5);
+      display:inline-block;
+      text-decoration: none;
+      font-size: 12pt;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      text-rendering: optimizeLegibility;
+      letter-spacing: 1px;
+      vertical-align: middle;
+      cursor: pointer;
+      border: none;
+      color:#c2bfbf;
+      background-color: transparent;
+      border-radius: 14px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      position: relative;
+      
+  }
+ .form_btn:hover{
+   -webkit-box-shadow: 0 0 0px 1px rgba(248, 246, 246, 0.945), 0 1px 2px rgba(248, 246, 246, 0.877);
+    box-shadow: 0 0 0 1px rgba(248, 246, 246, 0.877), 0 1px 2px rgba(248, 246, 246, 0.877);
+    color: white;
+  }
+  .cloud_icon{
+    color: rgb(95, 91, 91);
+    filter:brightness(120%);
+    cursor: pointer;
+    fill:rgb(117,117,117);
+    height:20px;
+    margin-right: 6px;
+    line-height: 17px;
+    overflow: hidden;
+    position: relative;
+    top:2px;
+    vertical-align: baseline;
+    width:13px;
+  }
+  .form_btn:hover .cloud_icon{
+    color: rgb(95, 91, 91);
+    filter:brightness(220%);
+    cursor: pointer;
+    fill:rgb(117,117,117);
+    height:20px;
+    line-height: 17px;
+    overflow: hidden;
+    position: relative;
+    top:2px;
+    vertical-align: baseline;
+    width:13px;
+  }
+@media(min-width:500px){
+    .NavigationItems{
+        flex-flow: row;
+    }
+}
