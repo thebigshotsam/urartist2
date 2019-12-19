@@ -2,6 +2,7 @@ import React,{Component} from "react";
 import classes from "./Upload.css";
 import cloud from "../../assets/images/cloud_upload_grey_192x192.png";
 import Aux from "../../hoc/Auxiliary";
+import postActions from "../../Store/Actions/post";
 class Upload extends Component{
     constructor(props)
     {
@@ -10,7 +11,10 @@ class Upload extends Component{
     }
     state =  {
         selectedFile: null,
-        imagePreviewUrl: null
+        imagePreviewUrl: null,
+        title:null,
+        description:null,
+        tags:[]
       }
      handleFileSelect = (e) => {
         e.preventDefault();
@@ -24,12 +28,22 @@ class Upload extends Component{
         }
         reader.readAsDataURL(file);
     }
+    onChangeEventHandler=(event,ele)=>{
+        if(ele === "title"){
+            this.setState({title:event.target.value});
+        }
+        if(ele === "description"){
+            this.setState({description:event.target.value});
+        }
+        
+    }
     submit = () => {
  
         var fd = new FormData();
-     
-        fd.append('file', this.state.selectedFile);
-     
+        fd.append('file', this.state.selectedFile)
+        fd.append("title",this.state.title);
+        fd.append("description",this.state.description); 
+        this.props.onSubmit(fd);   
     }
      
     render(){
@@ -75,7 +89,7 @@ class Upload extends Component{
                         <div >
                             <label className={classes.label}>Title</label>
                              <span className={classes.dd_input_wrap}>
-                                 <input type="text" placeholder="Add a Title" maxlength="64" className={classes.dd_input}>
+                                 <input onChange={(event)=>this.onChangeEventHandler(event,"title")} value={this.state.title} type="text" placeholder="Add a Title" maxlength="64" className={classes.dd_input}>
                                      </input> 
                              </span>
                         </div>
@@ -150,7 +164,7 @@ class Upload extends Component{
                         </path>
                     </svg>
                       </label> 
-                    <textarea placeholder="Tell us about your process and how you arrived at this design." className={classes.dd_input}>
+                    <textarea onChange={(event)=>this.onChangeEventHandler(event,"title")} value={this.state.description} placeholder="Tell us about your process and how you arrived at this design." className={classes.dd_input}>
                     </textarea>
                     </div>
                 </div>
@@ -181,5 +195,10 @@ class Upload extends Component{
     </Aux>
     }
     
+}
+const mapDispatchtoProps=dispatch=>{
+    return {
+        onSubmit:(formData)=>dispatch(postActions.createPost(formData))
+    }
 }
 export default Upload;
