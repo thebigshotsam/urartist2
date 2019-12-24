@@ -6,12 +6,12 @@ import viewsLogo from "../../../assets/images/eye.png";
 
 class PostItems extends Component{
     render(){
+        const url="http://localhost:8080/"+this.props.imageUrl;
         return <article class={[classes.card,classes.Post].join(" ")}>
              
         <div className={classes.card__image}>
-        
         <div className={classes.zoom}>
-            <img src={Logo}
+            <img src={url}
                 alt="Logo" />
            </div>
            <div style={{marginLeft:"45%",marginRight:"2px"}}>

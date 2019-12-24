@@ -1,4 +1,4 @@
-import * as actionTypes from "../actions/actions";
+import * as actionTypes from "../Actions/actions";
 const initialState={
     token:null,
     error:null,

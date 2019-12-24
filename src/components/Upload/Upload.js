@@ -2,7 +2,8 @@ import React,{Component} from "react";
 import classes from "./Upload.css";
 import cloud from "../../assets/images/cloud_upload_grey_192x192.png";
 import Aux from "../../hoc/Auxiliary";
-import postActions from "../../Store/Actions/post";
+import * as postActions from "../../Store/Actions/post";
+import {connect} from "react-redux";
 class Upload extends Component{
     constructor(props)
     {
@@ -37,13 +38,13 @@ class Upload extends Component{
         }
         
     }
-    submit = () => {
+     onSubmitHandler = () => {
  
-        var fd = new FormData();
-        fd.append('file', this.state.selectedFile)
+        const fd = new FormData();
+        fd.append("image",this.state.selectedFile);
         fd.append("title",this.state.title);
-        fd.append("description",this.state.description); 
-        this.props.onSubmit(fd);   
+        fd.append("content",this.state.description);
+        this.props.onSubmit(fd);
     }
      
     render(){
@@ -94,7 +95,7 @@ class Upload extends Component{
                              </span>
                         </div>
                     </div> 
-            <div className={classes.form_field}>
+            {/* <div className={classes.form_field}>
                 <div >
                     <label className={classes.label}>
                         Tags
@@ -110,8 +111,8 @@ class Upload extends Component{
                             
                             </div>
                 </div>
-                </div> 
-                        <div className={classes.suggested_tag_wrapper}>
+                </div>  */}
+                        {/* <div className={classes.suggested_tag_wrapper}>
                             <p className={[classes.pt20,classes.text_uppercase,classes.text_size_12,classes.text_medium,classes.text_weight_500,classes.lh_copy].join(" ")}>
                         Suggested Tags
                         <svg className={[classes.circle_help,classes.icon_16,classes.nudge_down_2,classes.nudge_right_2].join(" ")} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" svg-inline="" role="presentation" focusable="false" tabindex="-1" data-tippy="" data-original-title="These tags are recommended based on your tag history and popular tags across Dribbble.">
@@ -154,7 +155,7 @@ class Upload extends Component{
                         app
                     </a></li>
                     </ul>
-                </div>
+                </div> */}
                 <div className={classes.form_field}>
                     <div >
                         <label className={classes.label}>
@@ -164,7 +165,7 @@ class Upload extends Component{
                         </path>
                     </svg>
                       </label> 
-                    <textarea onChange={(event)=>this.onChangeEventHandler(event,"title")} value={this.state.description} placeholder="Tell us about your process and how you arrived at this design." className={classes.dd_input}>
+                    <textarea onChange={(event)=>this.onChangeEventHandler(event,"description")} value={this.state.description} placeholder="Tell us about your process and how you arrived at this design." className={classes.dd_input}>
                     </textarea>
                     </div>
                 </div>
@@ -186,8 +187,8 @@ class Upload extends Component{
         <div className={classes.footer_actions_left}>
           <a style={{textDecoration:"none"}} href="" className={[classes.dd_btn,classes.dd_btn_tertiary].join(" ")}>Cancel</a>                          
         </div>
-        <div className={classes.footer_actions_right}>
-            <a href="" className={[classes.dd_btn2,classes.dd_btn_tertiary].join(" ")}>
+        <div onClick={this.onSubmitHandler} className={classes.footer_actions_right}>
+            <a className={[classes.dd_btn2,classes.dd_btn_tertiary].join(" ")}>
                 <span>Publish to Draft</span>
             </a>
         </div>
@@ -196,9 +197,10 @@ class Upload extends Component{
     }
     
 }
+
 const mapDispatchtoProps=dispatch=>{
     return {
-        onSubmit:(formData)=>dispatch(postActions.createPost(formData))
+        onSubmit:(formData)=>dispatch(postActions.onCreatePost(formData))
     }
 }
-export default Upload;
+export default connect(null,mapDispatchtoProps)(Upload);

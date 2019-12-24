@@ -8,16 +8,17 @@ import App from './App';
 import PostReducer from "./Store/Reducer/post";
 import AuthReducer from "./Store/Reducer/auth";
 import registerServiceWorker from './registerServiceWorker';
+import thunk from "redux-thunk";
 
 const composeEnhancers=window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer=combineReducers({
-    post:PostReducer,
-    auth:AuthReducer
-    });
+    postReducer:PostReducer,
+    authReducer:AuthReducer
+  });
 const store =createStore(rootReducer,composeEnhancers(
     applyMiddleware(thunk)
 ));
-ReactDOM.render(<Provider>
+ReactDOM.render(<Provider store={store}>
                 <BrowserRouter>
                   <App />
                 </BrowserRouter>
